@@ -202,21 +202,21 @@
        </div>
 
        <div class="formcontainer bg-primary">
-         <h4 class="pb-3 text-light">Any Message</h4>
-         <form action="mailto:dhananjay.dharne09@gmail.com">
+        <h4 class="pb-3 text-light">Any Message</h4>
+        <form onsubmit="sendmail(); reset(); return false;">
 
-           <input type="text" placeholder="Your Name" class="inform"><br>
+          <input type="text" name="name" id="name" placeholder="Your Name" class="inform"><br>
 
-           <input type="email" placeholder="Your E-mail" class="inform"><br>
+          <input type="email" name="email" id="email" placeholder="Your E-mail" class="inform"><br>
 
-           <input type="text" placeholder="Subject" class="inform"><br>
+          <input type="text" name="subject" id="subject" placeholder="Subject" class="inform"><br>
 
-           <textarea rows="6" columns="20" placeholder="Any Message" class="inform"></textarea><br>
+          <textarea rows="6" columns="20" name="message" id="message" placeholder="Any Message" class="inform"></textarea><br>
 
-           <input type="submit" class="btn btn-lg btn-outline-light me-3">
-           <input type="reset" class="btn btn-lg btn-outline-light ">
-         </form>
-       </div>
+          <input type="submit" class="btn btn-lg btn-outline-light me-3">
+          <input type="reset" class="btn btn-lg btn-outline-light ">
+        </form>
+      </div>
      </div>
    </section>
 
@@ -262,7 +262,29 @@
        duration: 1000,
      });
    </script>
-   </body>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<!-- javascript code for sending email -->
+<script>
+
+    function sendmail(){
+Email.send({
+    SecureToken: "5a5eda5d-d70a-4b3d-b389-8fc94dc059d4",
+    To : 'dhananjay.dharne09@gmail.com',
+    From :'dsdharne2019@gmail.com',
+    Subject : "Message from viewer",
+    Body : "Name :"+document.getElementById("name").value
+            +"<br> Email :"+document.getElementById("email").value
+            +"<br> Subject :"+document.getElementById("subject").value
+            +"<br> Message :"+document.getElementById("message").value
+}).then(
+  // message => alert(message)
+  function (message) {
+          alert("Message Sent Successfully!!")
+        });
+}
+
+   </script>
    </body>
 
  </html>
